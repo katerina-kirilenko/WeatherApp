@@ -1,0 +1,6 @@
+.forecast-week {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1vw 0;
+}

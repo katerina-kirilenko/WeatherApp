@@ -1,0 +1,26 @@
+.service-switch {
+  display: flex;
+  position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+
+.switch-item.active,
+.switch-item:hover {
+  border: 1px solid red;
+}
+
+#weatherbit {
+  border-radius: 0.5rem 0 0 0.5rem;
+  background: #158ddc url('../../../assets/Weatherbit.png') no-repeat center;
+  background-size: 94%;
+}
+
+#openweather {
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: rgb(208, 221, 221) url('../../../assets/OpenWeather.png') no-repeat center;
+  background-size: 92%;
+}
