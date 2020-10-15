@@ -1,0 +1,95 @@
+/* General */
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Roboto, Tahoma, sans-serif;
+  font-weight: normal;
+  color: #fff;
+  font-size: 2.2rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4.4rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+/* Additional */
+.app {
+  height: 100vh;
+  background: linear-gradient(135deg, #111963 0%, #68a9e6 100%);
+}
+
+.button {
+  width: 4.4rem;
+  height: 4.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgb(26, 26, 26);
+  background-color: #bf9d6a;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.button:hover,
+.button.active:hover {
+  background-color: #ffddac;
+}
+
+.button.active {
+  background-color: #ffc268;
+}
+
+@media (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 374px) {
+  .app {
+    height: auto;
+  }
+}

@@ -1,0 +1,21 @@
+.item-forecast-week {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 15px 15px 15px;
+  padding: 15px;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  background: rgb(0, 0, 0, 0.2);
+  margin-bottom: 2vh;
+}
+
+.forecast-temperature span {
+  font-size: 2.6rem;
+  vertical-align: super;
+}
+
+.forecast-icon {
+  width: 7.7rem;
+  height: 7.7rem;
+}
