@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import ItemForecastWeek from "../ItemForecastWeek";
-import "./style.css";
+import ForecastItem from '@/components/blocks/ForecastItem';
+import './style.css';
 
 const ForecastWeek = () => {
   return (
-    <section className='forecast-week'>
-      <ItemForecastWeek />
-      <ItemForecastWeek />
-      <ItemForecastWeek />
-      <ItemForecastWeek />
-      <ItemForecastWeek />
+    <section className="forecast-week">
+      <ForecastItem />
+      <ForecastItem />
+      <ForecastItem />
+      <ForecastItem />
+      <ForecastItem />
     </section>
   );
 };

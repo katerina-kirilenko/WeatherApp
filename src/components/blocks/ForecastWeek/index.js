@@ -1,3 +1,3 @@
-import ForecastWeek from "./component";
+import ForecastWeek from './component';
 
 export default ForecastWeek;

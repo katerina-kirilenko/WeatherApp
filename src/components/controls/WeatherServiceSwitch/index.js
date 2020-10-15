@@ -1,3 +1,3 @@
-import WeatherServiceSwitch from "./component";
+import WeatherServiceSwitch from './component';
 
 export default WeatherServiceSwitch;

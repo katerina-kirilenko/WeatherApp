@@ -1,1 +1,1 @@
-export const NAME_FIELD = 'field_name'
+export const NAME_FIELD = 'field_name';

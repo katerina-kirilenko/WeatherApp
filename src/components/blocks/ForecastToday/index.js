@@ -1,3 +1,3 @@
-import ForecastToday from "./component";
+import ForecastToday from './component';
 
 export default ForecastToday;

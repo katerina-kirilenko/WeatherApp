@@ -1,14 +1,21 @@
-import React from "react";
+import React from 'react';
 
-import "./style.css";
+import { weatherServices } from './weather-services';
+import './style.css';
 
 const WeatherServiceSwitch = () => {
-  return (
-    <div className="service-switch">
-      <button id="weatherbit" className="button switch-item active"></button>
-      <button id="openweather" className="button switch-item"></button>
-    </div>
-  );
+  const buttonsServices = weatherServices.map((service) => {
+    return (
+      <button
+        key={service.id}
+        id={service.id}
+        className="button switch-item"
+        style={{ backgroundImage: `url(${service.ico})`, backgroundColor: service.bgColor }}
+      ></button>
+    );
+  });
+
+  return <div className="service-switch">{buttonsServices}</div>;
 };
 
 export default WeatherServiceSwitch;

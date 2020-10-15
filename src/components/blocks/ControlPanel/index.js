@@ -1,3 +1,3 @@
-import ControlPanel from "./component";
+import ControlPanel from './component';
 
 export default ControlPanel;

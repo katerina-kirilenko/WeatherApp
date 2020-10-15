@@ -56,18 +56,18 @@ button {
   font-size: 1.4rem;
   font-weight: 700;
   color: rgb(26, 26, 26);
-  background-color: #BF9D6A;
+  background-color: #bf9d6a;
   transition: all 0.2s;
   border: 1px solid transparent;
 }
 
 .button:hover,
 .button.active:hover {
-  background-color: #FFDDAC;
+  background-color: #ffddac;
 }
 
 .button.active {
-  background-color: #FFC268;
+  background-color: #ffc268;
 }
 
 @media (min-width: 112.5em) {

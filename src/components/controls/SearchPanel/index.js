@@ -1,3 +1,3 @@
-import SearchPanel from "./component";
+import SearchPanel from './component';
 
 export default SearchPanel;
