@@ -7,4 +7,3 @@
   },
   "exclude": [".storybook", "public", "node_modules", "dist"]
 }
-  

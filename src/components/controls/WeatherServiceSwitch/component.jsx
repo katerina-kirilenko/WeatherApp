@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { weatherServices } from './weather-services';
+import { weatherServices } from '../../../weather-services';
 import './style.css';
 
 const WeatherServiceSwitch = () => {

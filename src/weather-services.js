@@ -9,11 +9,13 @@ export const weatherServices = [
     key: REACT_APP_OPENWEATHER_KEY,
     ico: openweatherIcon,
     bgColor: '#fffc',
+    url: 'https://openweathermap.org/'
   },
   {
     id: 'weatherbit',
     key: REACT_APP_WEATHERBIT_KEY,
     ico: weatherbitIcon,
     bgColor: '#158ddc',
+    url: 'https://www.weatherbit.io/'
   },
 ];
