@@ -1,0 +1,2 @@
+export const PUT_DATA_WEATHER = 'PUT_DATA_WEATHER';
+export const LOAD_WEATHER = 'LOAD_WEATHER';

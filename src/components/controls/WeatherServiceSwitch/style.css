@@ -1,0 +1,28 @@
+.service-switch {
+  display: flex;
+  position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.switch-item.active,
+.switch-item:hover {
+  border: 1px solid red;
+}
+
+.service-switch .switch-item {
+  background-size: 94%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0;
+}
+
+.switch-item:first-child {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.switch-item:last-child {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
