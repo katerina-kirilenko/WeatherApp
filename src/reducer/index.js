@@ -1,9 +1,29 @@
-import { DEMO_ACTION } from '@/actions';
+import { PUT_DATA_WEATHER, LOAD_WEATHER } from '@/constants';
 
-export default (state = 0, { type, payload }) => {
+const initialState = {
+  weather: {},
+  coords: {
+    latitude: 0,
+    longitude: 0,
+    city: '',
+  },
+};
+
+export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case DEMO_ACTION:
-      return state;
+    case PUT_DATA_WEATHER:
+      return {
+        ...state,
+        weather: payload,
+      };
+    case LOAD_WEATHER:
+      return {
+        ...state,
+        coords: {
+          ...state.coords,
+          ...payload
+        },
+      };
     default:
       return state;
   }
