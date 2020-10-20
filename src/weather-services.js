@@ -1,5 +1,6 @@
 import openweatherIcon from '@/assets/OpenWeather.png';
 import climacell from '@/assets/climacell.png';
+import { convertDayName } from '@/utils/convertDay';
 
 const { REACT_APP_OPENWEATHER_KEY, REACT_APP_CLIMACELL_KEY } = process.env;
 
@@ -29,6 +30,21 @@ export const weatherServices = [
         wind: wind.speed,
         humidity: main.humidity,
       };
+    },
+    transformForecast: (list) => {
+      const mapper = ({ dt, main, weather }) => ({
+        day: convertDayName(dt),
+        temp: Math.round(main.temp),
+        icon: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
+      });
+
+      if (list) {
+        const forecast = [];
+        for (let i = 0; i < list.length; i += 8) {
+          forecast.push(mapper(list[i + 4]));
+        }
+        return forecast;
+      }
     },
   },
   {
