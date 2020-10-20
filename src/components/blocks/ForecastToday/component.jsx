@@ -1,12 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { getWeather } from '@/components/selectors/selectors';
 
 import './style.css';
 
 const ForecastToday = () => {
-  const { temp, icon, description, feels_like, wind, humidity } = useSelector(
-    (state) => state.weather,
-  );
+  const { temp, icon, description, feelsLike, wind, humidity } = useSelector(getWeather);
 
   return (
     <section className="forecast-today">
@@ -24,7 +23,7 @@ const ForecastToday = () => {
       </div>
       <div className="forecast-description">
         <div>
-          Feels like: <span>{feels_like} °C</span>
+          Feels like: <span>{feelsLike} °C</span>
         </div>
         <div>
           Wind: <span>{wind} m/s</span>

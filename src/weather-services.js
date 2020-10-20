@@ -25,7 +25,7 @@ export const weatherServices = [
         temp: Math.round(main.temp),
         icon: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
         description: weather[0].description,
-        feels_like: Math.round(main.feels_like),
+        feelsLike: Math.round(main.feels_like),
         wind: wind.speed,
         humidity: main.humidity,
       };
@@ -52,7 +52,7 @@ export const weatherServices = [
       return {
         temp: Math.round(temp.value),
         description: weather_code.value,
-        feels_like: Math.round(feels_like.value),
+        feelsLike: Math.round(feels_like.value),
         wind: wind_speed.value,
         humidity: humidity.value,
       };

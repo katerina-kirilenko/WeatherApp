@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ForecastToday from '../ForecastToday';
 import ForecastWeek from '../ForecastWeek';
