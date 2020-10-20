@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import ForecastToday from '../ForecastToday';
 import ForecastWeek from '../ForecastWeek';
 import ControlPanel from '../ControlPanel';
-import { usePosition } from '@/utils/usePosition';
+import { usePosition } from '@/hooks/usePosition';
 import { loadWeather } from '@/actions';
 
 import './style.css';

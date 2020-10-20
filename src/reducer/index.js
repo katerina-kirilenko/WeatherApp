@@ -1,12 +1,13 @@
 import { PUT_DATA_WEATHER, LOAD_WEATHER } from '@/constants';
 
 const initialState = {
-  weather: {},
+  selectedService: 'openweather',
   coords: {
     latitude: 0,
     longitude: 0,
-    city: '',
   },
+  weather: {},
+  city: '',
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -21,7 +22,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         coords: {
           ...state.coords,
-          ...payload
+          ...payload,
         },
       };
     default:

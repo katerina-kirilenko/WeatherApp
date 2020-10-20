@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { weatherServices } from '../../../weather-services';
+import { weatherServices } from '@/weather-services';
 import './style.css';
 
 const WeatherServiceSwitch = () => {
@@ -9,9 +9,10 @@ const WeatherServiceSwitch = () => {
       <button
         key={service.id}
         id={service.id}
+        title={service.id}
         className="button switch-item"
         style={{ backgroundImage: `url(${service.ico})`, backgroundColor: service.bgColor }}
-      ></button>
+      />
     );
   });
 

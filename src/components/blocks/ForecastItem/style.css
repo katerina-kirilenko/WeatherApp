@@ -15,7 +15,7 @@
   vertical-align: super;
 }
 
-.forecast-icon {
+.item-forecast-week .forecast-icon {
   width: 7.7rem;
   height: 7.7rem;
 }
