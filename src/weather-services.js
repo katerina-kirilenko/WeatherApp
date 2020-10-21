@@ -1,6 +1,7 @@
 import openweatherIcon from '@/assets/OpenWeather.png';
 import climacell from '@/assets/climacell.png';
 import { convertDayName } from '@/utils/convertDay';
+import moment from 'moment';
 
 const { REACT_APP_OPENWEATHER_KEY, REACT_APP_CLIMACELL_KEY } = process.env;
 
@@ -31,10 +32,11 @@ export const weatherServices = [
         humidity: main.humidity,
       };
     },
-    transformForecast: (list) => {
+    transformForecast: ({ list }) => {
       const mapper = ({ dt, main, weather }) => ({
-        day: convertDayName(dt),
+        day: convertDayName(dt * 1000),
         temp: Math.round(main.temp),
+        description: weather[0].description,
         icon: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
       });
 
@@ -58,12 +60,18 @@ export const weatherServices = [
       lat: 'lat',
       lon: 'lon',
       units: 'unit_system',
+      startTime: 'start_time',
+      endTime: 'end_time',
       parameters: 'fields',
       key: 'apikey',
     },
     baseUrl: 'https://api.climacell.co/v3/weather/',
     weatherPath: 'realtime',
     forecastPath: 'forecast/daily',
+    forecastParameters: {
+      startTime: 'now',
+      endTime: moment().add(5, 'days').format(),
+    },
     transformWeatherToday: ({ temp, weather_code, feels_like, wind_speed, humidity }) => {
       return {
         temp: Math.round(temp.value),
@@ -72,6 +80,16 @@ export const weatherServices = [
         wind: wind_speed.value,
         humidity: humidity.value,
       };
+    },
+    transformForecast: (data) => {
+      return data.slice(1).map(({ observation_time, temp, weather_code }) => {
+        return {
+          day: convertDayName(new Date(observation_time.value).getTime()),
+          temp: Math.round((temp[0].min.value + temp[1].max.value) / 2),
+          description: weather_code.value,
+          icon: '',
+        };
+      });
     },
   },
 ];

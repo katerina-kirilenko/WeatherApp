@@ -1,5 +1,5 @@
 import { weatherServices } from '@/weather-services';
-import { WEATHER } from '@/constants';
+import { WEATHER, FORECAST } from '@/constants';
 
 const queryString = require('query-string');
 
@@ -13,17 +13,27 @@ async function getWeather({ latitude = 0, longitude = 0, selectedService }, type
     unit,
     parameters,
     args,
+    forecastParameters,
     transformWeatherToday,
     transformForecast,
   } = service;
 
   const path = type === WEATHER ? weatherPath : forecastPath;
+
+  let startTime, endTime;
+  if (type === FORECAST && forecastParameters) {
+    startTime = forecastParameters.startTime;
+    endTime = forecastParameters.endTime;
+  }
+
   const queryWeather = {
     url: baseUrl + path,
     query: {
       [args.lat]: latitude,
       [args.lon]: longitude,
       [args.units]: unit,
+      [args.startTime]: startTime,
+      [args.endTime]: endTime,
       [args.parameters]: parameters,
       [args.key]: key,
     },
@@ -42,9 +52,7 @@ async function getWeather({ latitude = 0, longitude = 0, selectedService }, type
     received ${response.status}`);
   }
   const data = await response.json();
-
-  const transformData =
-    type === WEATHER ? transformWeatherToday(data) : transformForecast(data.list);
+  const transformData = type === WEATHER ? transformWeatherToday(data) : transformForecast(data);
 
   return transformData;
 }
