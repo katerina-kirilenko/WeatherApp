@@ -1,7 +1,7 @@
+import queryString from 'query-string';
+
 import { weatherServices } from '@/weather-services';
 import { WEATHER, FORECAST } from '@/constants';
-
-const queryString = require('query-string');
 
 async function getWeather({ latitude = 0, longitude = 0, selectedService }, type) {
   const service = weatherServices.find((service) => service.id === selectedService);

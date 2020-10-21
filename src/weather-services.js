@@ -1,7 +1,8 @@
+import moment from 'moment';
+
 import openweatherIcon from '@/assets/OpenWeather.png';
 import climacell from '@/assets/climacell.png';
 import { convertDayName } from '@/utils/convertDay';
-import moment from 'moment';
 
 const { REACT_APP_OPENWEATHER_KEY, REACT_APP_CLIMACELL_KEY } = process.env;
 

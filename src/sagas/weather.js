@@ -2,7 +2,7 @@ import { takeEvery, put, call, select } from 'redux-saga/effects';
 
 import { LOAD_WEATHER, WEATHER, FORECAST } from '@/constants';
 import { putDataWeather, putDataForecast } from '@/actions';
-import { getWeather } from '@/utils/fetchData';
+import { getWeather } from '@/api/fetchData';
 import { getCoordsAndService } from '@/components/selectors/selectors';
 
 function* loadWeather() {
