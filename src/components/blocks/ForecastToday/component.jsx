@@ -1,31 +1,35 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { getWeather } from '@/components/selectors/selectors';
 
 import './style.css';
 
 const ForecastToday = () => {
+  const { temp, icon, description, feelsLike, wind, humidity } = useSelector(getWeather);
+
   return (
     <section className="forecast-today">
       <div className="wrap">
         <div className="temperature-today">
-          <span className="degree-t">+12</span>
+          <span className="degree-t">{temp}</span>
           <span className="degree-icon">℃</span>
         </div>
         <div className="forecast-title">
           <div className="forecast-icon">
-            <img alt="forecast-icon" title="forecast" src="https://openweathermap.org/img/wn/10d@2x.png" />
+            <img alt={description} title={description} src={icon} />
           </div>
-          <p>Moderate rain</p>
+          <p>{description}</p>
         </div>
       </div>
       <div className="forecast-description">
         <div>
-          Feels like: <span>9 °C</span>
+          Feels like: <span>{feelsLike} °C</span>
         </div>
         <div>
-          Wind: <span>5.0 m/s</span>
+          Wind: <span>{wind} m/s</span>
         </div>
         <div>
-          Humidity: <span>100%</span>
+          Humidity: <span>{humidity}%</span>
         </div>
       </div>
     </section>

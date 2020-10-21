@@ -5,12 +5,8 @@ export const usePosition = (watch = false) => {
   const [error, setError] = useState(null);
 
   const onChange = ({ coords, timestamp }) => {
-    setPosition({
-      latitude: coords.latitude,
-      longitude: coords.longitude,
-      accuracy: coords.accuracy,
-      timestamp,
-    });
+    const { latitude, longitude, accuracy } = coords;
+    setPosition({ latitude, longitude, accuracy, timestamp });
   };
 
   const onError = (error) => {
