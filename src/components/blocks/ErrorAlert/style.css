@@ -1,0 +1,13 @@
+.error-alert {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+}
+
+.error-alert * {
+  text-align: center;
+  color: #e04545;
+}

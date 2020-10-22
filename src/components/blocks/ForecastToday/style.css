@@ -1,74 +1,11 @@
 .forecast-today {
-  margin-bottom: 3rem;
-}
-
-.forecast-today .wrap {
   display: flex;
-  justify-content: center;
-}
-
-.temperature-today {
-  font-size: 17.2rem;
-  margin-right: 4rem;
-  min-width: 47%;
-}
-
-.degree-icon {
-  font-size: 9.6rem;
-  vertical-align: super;
-}
-
-.forecast-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-
-.forecast-title p {
-  word-break: break-word;
-}
-
-.forecast-title p:first-letter {
-  text-transform: capitalize;
-}
-
-.forecast-today .forecast-icon {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.forecast-description {
-  display: flex;
-  line-height: 3.4rem;
-  justify-content: space-between;
-  font-style: italic;
-  margin-top: 1vw;
-}
-
-.forecast-description div {
-  margin: 0 12px;
+  margin-bottom: 3rem;
 }
 
 @media (max-width: 525px) {
   .forecast-today {
     font-size: 2rem;
-  }
-  .temperature-today {
-    font-size: 10rem;
-    margin-right: 2rem;
-    min-width: 47%;
-  }
-  .degree-icon {
-    font-size: 4.6rem;
-  }
-  .forecast-today .forecast-icon {
-    width: 12rem;
-  }
-  .forecast-description {
-    flex-direction: column;
   }
 }
