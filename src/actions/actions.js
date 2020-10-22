@@ -6,6 +6,7 @@ import {
   DATA_FORECAST_REQUEST,
   DATA_FORECAST_RESPONSE,
   DATA_FORECAST_FAILED,
+  SET_SERVICE,
 } from '@/constants';
 
 export const requestDataWeather = () => {
@@ -45,6 +46,13 @@ export const failedDataForecast = (text) => {
   return {
     type: DATA_FORECAST_FAILED,
     payload: text,
+  };
+};
+
+export const setService = (id) => {
+  return {
+    type: SET_SERVICE,
+    payload: id,
   };
 };
 
