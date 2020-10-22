@@ -3,9 +3,7 @@ import { createSelector } from 'reselect';
 const getState = (state) => state;
 
 export const getWeather = createSelector(getState, ({ weather }) => {
-  return {
-    ...weather,
-  };
+  return weather;
 });
 
 export const getForecast = createSelector(getState, ({ forecast }) => {

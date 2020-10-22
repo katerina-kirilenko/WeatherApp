@@ -4,7 +4,7 @@ import ForecastToday from '../ForecastToday';
 import ForecastWeek from '../ForecastWeek';
 import ControlPanel from '../ControlPanel';
 import { usePosition } from '@/hooks/usePosition';
-import { loadWeather } from '@/actions';
+import { putCoords } from '@/actions';
 
 import './style.css';
 
@@ -14,7 +14,7 @@ const Wrapper = () => {
 
   useEffect(() => {
     if (latitude && longitude) {
-      dispatch(loadWeather({ latitude, longitude }));
+      dispatch(putCoords({ latitude, longitude }));
     }
   }, [dispatch, latitude, longitude]);
 

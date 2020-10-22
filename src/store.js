@@ -3,10 +3,10 @@ import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import saga from '@/sagas';
-import reducer from '@/reducer';
+import weatherReducer from '@/reducer';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+const store = createStore(weatherReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(saga);
 
