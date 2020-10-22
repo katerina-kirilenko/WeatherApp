@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getForecast } from '@/selectors/selectors';
+import { getForecast } from '@/selectors';
 import ForecastItem from '@/components/blocks/ForecastItem';
 import ErrorAlert from '../ErrorAlert/component';
 import Spinner from '../Spinner';

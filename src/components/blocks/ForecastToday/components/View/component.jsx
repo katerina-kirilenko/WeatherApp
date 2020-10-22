@@ -1,6 +1,7 @@
 import React from 'react';
+import './style.css';
 
-export const View = ({ temp, icon, description, feelsLike, wind, humidity }) => {
+const View = ({ temp, icon, description, feelsLike, wind, humidity }) => {
   return (
     <>
       <div className="wrap">
@@ -29,3 +30,5 @@ export const View = ({ temp, icon, description, feelsLike, wind, humidity }) => 
     </>
   );
 };
+
+export default View;

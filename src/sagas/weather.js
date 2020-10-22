@@ -9,7 +9,7 @@ import {
   failedDataForecast,
 } from '@/actions';
 import { getWeather } from '@/api/fetchData';
-import { getCoordsAndService } from '@/selectors/selectors';
+import { getCoordsAndService } from '@/selectors';
 
 function* loadWeather() {
   try {

@@ -48,7 +48,7 @@ export const failedDataForecast = (text) => {
   };
 };
 
-export const putCoords = (coords) => {
+export const setCoords = (coords) => {
   return {
     type: FETCH_COORDS,
     payload: coords,

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getWeather } from '@/selectors/selectors';
+import { getWeather } from '@/selectors';
 import Spinner from '@/components/blocks/Spinner';
 import ErrorAlert from '../ErrorAlert/component';
-import { View } from './components/view/view';
+import View from './components/View';
 
 import './style.css';
 
