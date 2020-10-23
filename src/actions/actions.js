@@ -7,6 +7,9 @@ import {
   DATA_FORECAST_RESPONSE,
   DATA_FORECAST_FAILED,
   SET_SERVICE,
+  SET_CITY,
+  CITY_GEOCODING,
+  COORDS_GEOCODING,
 } from '@/constants';
 
 export const requestDataWeather = () => {
@@ -56,9 +59,29 @@ export const setService = (id) => {
   };
 };
 
+export const setCity = (name) => {
+  return {
+    type: SET_CITY,
+    payload: name,
+  };
+};
+
 export const setCoords = (coords) => {
   return {
     type: FETCH_COORDS,
     payload: coords,
+  };
+};
+
+export const cityGeocoding = (city) => {
+  return {
+    type: CITY_GEOCODING,
+    payload: city,
+  };
+};
+
+export const coordsGeocoding = () => {
+  return {
+    type: COORDS_GEOCODING,
   };
 };

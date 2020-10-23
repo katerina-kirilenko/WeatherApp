@@ -9,3 +9,7 @@ export const DATA_FORECAST_FAILED = 'DATA_FORECAST_FAILED';
 export const FETCH_COORDS = 'FETCH_COORDS';
 
 export const SET_SERVICE = 'SET_SERVICE';
+export const SET_CITY = 'SET_CITY';
+
+export const CITY_GEOCODING = 'CITY_GEOCODING';
+export const COORDS_GEOCODING = 'COORDS_GEOCODING';

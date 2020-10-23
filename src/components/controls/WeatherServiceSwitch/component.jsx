@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSelectedService } from '@/selectors';
@@ -8,12 +8,15 @@ import { setService } from '@/actions';
 import './style.css';
 
 const WeatherServiceSwitch = () => {
-  const selectedServiceId = useSelector(getSelectedService);
   const dispatch = useDispatch();
+  const selectedServiceId = useSelector(getSelectedService);
 
-  const handleClickService = (event) => {
-    dispatch(setService(event.target.id));
-  };
+  const handleClickService = useCallback(
+    (event) => {
+      dispatch(setService(event.target.id));
+    },
+    [dispatch],
+  );
 
   const buttonsServices = weatherServices.map(({ id, ico, bgColor }) => {
     return (
