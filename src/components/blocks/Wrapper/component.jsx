@@ -10,11 +10,10 @@ import { getCity, getSelectedService } from '@/selectors';
 import './style.css';
 
 const Wrapper = () => {
+  const dispatch = useDispatch();
   const selectedServiceId = useSelector(getSelectedService);
   const city = useSelector(getCity);
   const { latitude, longitude } = usePosition();
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (latitude && longitude && !city) {
