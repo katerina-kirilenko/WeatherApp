@@ -49,6 +49,11 @@
   margin: 0 12px;
 }
 
+.forecast-description p {
+  display: inline-block;
+  margin-right: 5px;
+}
+
 @media (max-width: 525px) {
   .temperature-today {
     font-size: 10rem;

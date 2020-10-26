@@ -3,7 +3,6 @@ import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import saga from '@/sagas';
 import reducer from '@/reducer';
@@ -12,9 +11,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
   key: 'root',
-  storage: storage,
-  whitelist: ['city', 'coords', 'selectedService'],
-  stateReconciler: autoMergeLevel2,
+  storage,
 };
 
 const pReducer = persistReducer(persistConfig, reducer);

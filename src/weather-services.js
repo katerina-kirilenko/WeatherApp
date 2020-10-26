@@ -2,11 +2,11 @@ import moment from 'moment';
 
 import openweatherIcon from '@/assets/OpenWeather.png';
 import climacell from '@/assets/climacell.png';
-import { convertDayName } from '@/utils/convertDay';
+import convertDayName from '@/utils/convertDay';
 
 const { REACT_APP_OPENWEATHER_KEY, REACT_APP_CLIMACELL_KEY } = process.env;
 
-export const weatherServices = [
+const weatherServices = [
   {
     id: 'openweather',
     key: REACT_APP_OPENWEATHER_KEY,
@@ -40,14 +40,13 @@ export const weatherServices = [
         description: weather[0].description,
         icon: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
       });
-
+      const forecast = [];
       if (list) {
-        const forecast = [];
         for (let i = 0; i < list.length; i += 8) {
           forecast.push(mapper(list[i + 4]));
         }
-        return forecast;
       }
+      return forecast;
     },
   },
   {
@@ -73,24 +72,26 @@ export const weatherServices = [
       startTime: 'now',
       endTime: moment().add(5, 'days').format(),
     },
-    transformWeatherToday: ({ temp, weather_code, feels_like, wind_speed, humidity }) => {
+    transformWeatherToday: (data) => {
       return {
-        temp: Math.round(temp.value),
-        description: weather_code.value,
-        feelsLike: Math.round(feels_like.value),
-        wind: wind_speed.value,
-        humidity: humidity.value,
+        temp: Math.round(data.temp.value),
+        description: data.weather_code.value,
+        feelsLike: Math.round(data.feels_like.value),
+        wind: data.wind_speed.value,
+        humidity: data.humidity.value,
       };
     },
     transformForecast: (data) => {
-      return data.slice(1).map(({ observation_time, temp, weather_code }) => {
+      return data.slice(1).map((item) => {
         return {
-          day: convertDayName(new Date(observation_time.value).getTime()),
-          temp: Math.round((temp[0].min.value + temp[1].max.value) / 2),
-          description: weather_code.value,
+          day: convertDayName(new Date(item.observation_time.value).getTime()),
+          temp: Math.round((item.temp[0].min.value + item.temp[1].max.value) / 2),
+          description: item.weather_code.value,
           icon: '',
         };
       });
     },
   },
 ];
+
+export default weatherServices;

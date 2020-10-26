@@ -11,8 +11,8 @@ const ForecastWeek = () => {
   const { data, isLoading, error } = useSelector(getForecast);
   const hasData = !(isLoading || error);
 
-  const forecastItems = data.map((item, idx) => {
-    return <ForecastItem key={idx} {...item} />;
+  const forecastItems = data.map((item) => {
+    return <ForecastItem key={item.day} data={item} />;
   });
 
   return (

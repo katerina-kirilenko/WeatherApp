@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './style.css';
 
-const View = ({ temp, icon, description, feelsLike, wind, humidity }) => {
+const View = ({ data: { temp, icon, description, feelsLike, wind, humidity } }) => {
   return (
     <>
       <div className="wrap">
@@ -23,22 +25,46 @@ const View = ({ temp, icon, description, feelsLike, wind, humidity }) => {
       <div className="forecast-description">
         {feelsLike && (
           <div>
-            Feels like: <span>{feelsLike} °C</span>
+            <p>Feels like:</p>
+            <p>
+              <span>{feelsLike}</span>
+              <span> °C</span>
+            </p>
           </div>
         )}
         {wind && (
           <div>
-            Wind: <span>{wind} m/s</span>
+            <p>Wind:</p>
+            <p>
+              <span>{wind}</span>
+              <span> m/s</span>
+            </p>
           </div>
         )}
         {humidity && (
           <div>
-            Humidity: <span>{humidity}%</span>
+            <p>Humidity:</p>
+            <p>
+              <span>{humidity}</span>
+              <span>%</span>
+            </p>
           </div>
         )}
       </div>
     </>
   );
+};
+
+View.propTypes = {
+  data: PropTypes.shape({
+    city: PropTypes.string,
+    temp: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    feelsLike: PropTypes.number.isRequired,
+    wind: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default View;
