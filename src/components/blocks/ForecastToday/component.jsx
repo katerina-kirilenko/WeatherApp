@@ -16,7 +16,7 @@ const ForecastToday = () => {
     <section className="forecast-today">
       {error && <ErrorAlert errorText={error} />}
       {isLoading && <Spinner />}
-      {hasData && <View {...data} />}
+      {hasData && <View data={data} />}
     </section>
   );
 };

@@ -10,7 +10,7 @@ import {
   setCity,
   setCoords,
 } from '@/actions';
-import { getWeather } from '@/api/fetchWeather';
+import getWeather from '@/api/fetchWeather';
 import { getCityName, getCityCoordinates } from '@/api/geocoding';
 import { getCoordsAndService, getCoordinates } from '@/selectors';
 
