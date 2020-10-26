@@ -6,6 +6,8 @@ import {
   DATA_FORECAST_REQUEST,
   DATA_FORECAST_RESPONSE,
   DATA_FORECAST_FAILED,
+  SET_SERVICE,
+  SET_CITY,
 } from '@/constants';
 
 const initialState = {
@@ -29,6 +31,16 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case SET_SERVICE:
+      return {
+        ...state,
+        selectedService: payload,
+      };
+    case SET_CITY:
+      return {
+        ...state,
+        city: payload,
+      };
     case FETCH_COORDS:
       return {
         ...state,

@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import { weatherServices } from '@/weather-services';
 import { WEATHER, FORECAST } from '@/constants';
 
-async function getWeather({ latitude = 0, longitude = 0, selectedService }, type) {
+const getWeather = async ({ latitude = 0, longitude = 0, selectedService }, type) => {
   const service = weatherServices.find((service) => service.id === selectedService);
   const {
     baseUrl,
@@ -55,6 +55,6 @@ async function getWeather({ latitude = 0, longitude = 0, selectedService }, type
   const transformData = type === WEATHER ? transformWeatherToday(data) : transformForecast(data);
 
   return transformData;
-}
+};
 
 export { getWeather };

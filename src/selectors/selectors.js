@@ -17,4 +17,23 @@ const getCoordsAndService = createSelector(getState, ({ coords, selectedService 
   };
 });
 
-export { getWeather, getForecast, getCoordsAndService };
+const getSelectedService = createSelector(getState, ({ selectedService }) => {
+  return selectedService;
+});
+
+const getCity = createSelector(getState, ({ city }) => {
+  return city;
+});
+
+const getCoordinates = createSelector(getState, ({ coords }) => {
+  return coords;
+});
+
+export {
+  getWeather,
+  getForecast,
+  getCoordsAndService,
+  getSelectedService,
+  getCity,
+  getCoordinates,
+};

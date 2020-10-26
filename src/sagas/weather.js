@@ -1,5 +1,5 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
-import { FETCH_COORDS, WEATHER, FORECAST } from '@/constants';
+import { FETCH_COORDS, WEATHER, FORECAST, COORDS_GEOCODING, CITY_GEOCODING } from '@/constants';
 import {
   requestDataWeather,
   responseDataWeather,
@@ -7,9 +7,12 @@ import {
   requestDataForecast,
   responseDataForecast,
   failedDataForecast,
+  setCity,
+  setCoords,
 } from '@/actions';
-import { getWeather } from '@/api/fetchData';
-import { getCoordsAndService } from '@/selectors';
+import { getWeather } from '@/api/fetchWeather';
+import { getCityName, getCityCoordinates } from '@/api/geocoding';
+import { getCoordsAndService, getCoordinates } from '@/selectors';
 
 function* loadWeather() {
   try {
@@ -37,7 +40,30 @@ function* loadForecast() {
   }
 }
 
+function* getCityWorker() {
+  try {
+    const { latitude, longitude } = yield select(getCoordinates);
+    const name = yield call(getCityName, { latitude, longitude });
+
+    yield put(setCity(name));
+  } catch (error) {
+    console.log('An error has occurred', error);
+  }
+}
+
+function* getCoords({ payload }) {
+  try {
+    const { latitude, longitude } = yield call(getCityCoordinates, payload);
+
+    yield put(setCoords({ latitude, longitude }));
+  } catch (error) {
+    console.log('An error has occurred', error);
+  }
+}
+
 export default function* () {
   yield takeEvery(FETCH_COORDS, loadWeather);
   yield takeEvery(FETCH_COORDS, loadForecast);
+  yield takeEvery(COORDS_GEOCODING, getCityWorker);
+  yield takeEvery(CITY_GEOCODING, getCoords);
 }
