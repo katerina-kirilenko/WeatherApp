@@ -1,10 +1,10 @@
 import queryString from 'query-string';
 
-import { weatherServices } from '@/weather-services';
+import weatherServices from '@/weather-services';
 import { WEATHER, FORECAST } from '@/constants';
 
 const getWeather = async ({ latitude = 0, longitude = 0, selectedService }, type) => {
-  const service = weatherServices.find((service) => service.id === selectedService);
+  const service = weatherServices.find((weatherService) => weatherService.id === selectedService);
   const {
     baseUrl,
     weatherPath,
@@ -20,7 +20,8 @@ const getWeather = async ({ latitude = 0, longitude = 0, selectedService }, type
 
   const path = type === WEATHER ? weatherPath : forecastPath;
 
-  let startTime, endTime;
+  let startTime;
+  let endTime;
   if (type === FORECAST && forecastParameters) {
     startTime = forecastParameters.startTime;
     endTime = forecastParameters.endTime;
@@ -57,4 +58,4 @@ const getWeather = async ({ latitude = 0, longitude = 0, selectedService }, type
   return transformData;
 };
 
-export { getWeather };
+export default getWeather;
