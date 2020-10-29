@@ -58,12 +58,12 @@ const View = ({ data: { temp, icon, description, feelsLike, wind, humidity } }) 
 View.propTypes = {
   data: PropTypes.shape({
     city: PropTypes.string,
-    temp: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    feelsLike: PropTypes.number.isRequired,
-    wind: PropTypes.number.isRequired,
-    humidity: PropTypes.number.isRequired,
+    temp: PropTypes.number,
+    description: PropTypes.string,
+    icon: PropTypes.string,
+    feelsLike: PropTypes.number,
+    wind: PropTypes.number,
+    humidity: PropTypes.number,
   }).isRequired,
 };
 
