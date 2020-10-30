@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCity } from '@/selectors';
-import { cityGeocoding, setCity } from '@/actions';
+import { handleWeatherRequests, setCity } from '@/actions';
 
 import './style.css';
 
@@ -18,7 +18,7 @@ const SearchPanel = () => {
     (event) => {
       event.preventDefault();
       dispatch(setCity(city));
-      dispatch(cityGeocoding(city));
+      dispatch(handleWeatherRequests());
     },
     [city, dispatch],
   );

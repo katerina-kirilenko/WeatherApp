@@ -1,5 +1,5 @@
 import {
-  FETCH_COORDS,
+  SET_COORDS,
   DATA_WEATHER_REQUEST,
   DATA_WEATHER_RESPONSE,
   DATA_WEATHER_FAILED,
@@ -41,7 +41,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         city: payload,
       };
-    case FETCH_COORDS:
+    case SET_COORDS:
       return {
         ...state,
         coords: {
