@@ -2,26 +2,26 @@
 
 ![screenshot main](./readme_assets/main.png)
 
-## [Живая демонстрация](https://kea-weather-react-app.netlify.app/)
+## [Live demo](https://kea-weather-react-app.netlify.app/)
 
-## Описание
+## Description
 
-Приложение реализовано с использованием React, Redux, Redux-Saga и др. библиотек. Имеет на выбор два сервиса для получения погоды: Openweathermap и Climacell. Получает данные погоды на текущий день, а также прогноз на 5 дней.
+The application is implemented using React, Redux, Redux-Saga and other libraries. Has a choice of two services for getting weather: Openweathermap and Climacell. Receives weather data for the current day, as well as a forecast for 5 days.
 
-## Как использовать
+## How to use
 
-- Для определения текущего местоположения пользователя, необходимо разрешить доступ к геолокации в браузере.
-- Для поиска погоды в других городах, необходимо ввести в поле поиска на русском либо английском языке название города и нажать кнопку "Search".
+- To determine the current location of the user, you must allow access to geolocation in the browser.
+- To search for weather in other cities, you must enter the name of the city in the search field in Russian or English and click the "Search" button.
 
 ![screenshot full app](./readme_assets/app-full.png)
 
-## Настройка проекта
+## Project setup
 
 ```
 npm install
 npm start
 ```
 
-## На будущее
+## For the future
 
-Можно добавлять и другие сервисы погоды.
+Other weather services can be added.
