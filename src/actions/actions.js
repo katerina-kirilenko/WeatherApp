@@ -1,5 +1,5 @@
 import {
-  FETCH_COORDS,
+  SET_COORDS,
   DATA_WEATHER_REQUEST,
   DATA_WEATHER_RESPONSE,
   DATA_WEATHER_FAILED,
@@ -8,8 +8,7 @@ import {
   DATA_FORECAST_FAILED,
   SET_SERVICE,
   SET_CITY,
-  CITY_GEOCODING,
-  COORDS_GEOCODING,
+  HANDLE_WEATHER_REQUESTS,
 } from '@/constants';
 
 export const requestDataWeather = () => {
@@ -68,20 +67,14 @@ export const setCity = (name) => {
 
 export const setCoords = (coords) => {
   return {
-    type: FETCH_COORDS,
+    type: SET_COORDS,
     payload: coords,
   };
 };
 
-export const cityGeocoding = (city) => {
+export const handleWeatherRequests = (coords) => {
   return {
-    type: CITY_GEOCODING,
-    payload: city,
-  };
-};
-
-export const coordsGeocoding = () => {
-  return {
-    type: COORDS_GEOCODING,
+    type: HANDLE_WEATHER_REQUESTS,
+    payload: coords,
   };
 };

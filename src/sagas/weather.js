@@ -1,5 +1,5 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
-import { FETCH_COORDS, WEATHER, FORECAST, COORDS_GEOCODING, CITY_GEOCODING } from '@/constants';
+import { WEATHER, FORECAST, HANDLE_WEATHER_REQUESTS } from '@/constants';
 import {
   requestDataWeather,
   responseDataWeather,
@@ -8,17 +8,15 @@ import {
   responseDataForecast,
   failedDataForecast,
   setCity,
-  setCoords,
 } from '@/actions';
 import getWeather from '@/api/fetchWeather';
 import { getCityName, getCityCoordinates } from '@/api/geocoding';
-import { getCoordsAndService, getCoordinates } from '@/selectors';
+import { getCoordinates, getCity, getSelectedService } from '@/selectors';
 
-function* loadWeather() {
+function* loadWeather(latitude, longitude, selectedService) {
   try {
     yield put(requestDataWeather());
 
-    const { latitude, longitude, selectedService } = yield select(getCoordsAndService);
     const weatherToday = yield call(getWeather, { latitude, longitude, selectedService }, WEATHER);
 
     yield put(responseDataWeather(weatherToday));
@@ -27,11 +25,10 @@ function* loadWeather() {
   }
 }
 
-function* loadForecast() {
+function* loadForecast(latitude, longitude, selectedService) {
   try {
     yield put(requestDataForecast());
 
-    const { latitude, longitude, selectedService } = yield select(getCoordsAndService);
     const forecast = yield call(getWeather, { latitude, longitude, selectedService }, FORECAST);
 
     yield put(responseDataForecast(forecast));
@@ -40,30 +37,34 @@ function* loadForecast() {
   }
 }
 
-function* getCityWorker() {
+function* handlerWeatherRequests() {
   try {
+    let coordinates = { lat: null, lng: null };
     const { latitude, longitude } = yield select(getCoordinates);
-    const name = yield call(getCityName, { latitude, longitude });
+    const cityName = yield select(getCity);
+    const selectedService = yield select(getSelectedService);
 
-    yield put(setCity(name));
-  } catch (error) {
-    console.log('An error has occurred', error);
-  }
-}
+    if (latitude && longitude && !cityName) {
+      coordinates = { lat: latitude, lng: longitude };
 
-function* getCoords({ payload }) {
-  try {
-    const { latitude, longitude } = yield call(getCityCoordinates, payload);
+      const name = yield call(getCityName, { latitude, longitude });
+      yield put(setCity(name));
+    } else if (cityName) {
+      const coordsByCity = yield call(getCityCoordinates, cityName);
+      coordinates = { lat: coordsByCity.latitude, lng: coordsByCity.longitude };
+    }
 
-    yield put(setCoords({ latitude, longitude }));
+    if ((latitude && longitude) || cityName) {
+      yield loadWeather(coordinates.lat, coordinates.lng, selectedService);
+      yield loadForecast(coordinates.lat, coordinates.lng, selectedService);
+    } else {
+      console.log('Coordinates not found');
+    }
   } catch (error) {
     console.log('An error has occurred', error);
   }
 }
 
 export default function* () {
-  yield takeEvery(FETCH_COORDS, loadWeather);
-  yield takeEvery(FETCH_COORDS, loadForecast);
-  yield takeEvery(COORDS_GEOCODING, getCityWorker);
-  yield takeEvery(CITY_GEOCODING, getCoords);
+  yield takeEvery(HANDLE_WEATHER_REQUESTS, handlerWeatherRequests);
 }
